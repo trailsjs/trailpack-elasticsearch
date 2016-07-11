@@ -1,0 +1,1 @@
+exports.ElasticsearchService = require('./ElasticsearchService')
