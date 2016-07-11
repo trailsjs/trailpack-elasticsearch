@@ -1,0 +1,50 @@
+{
+  "name": "trailpack-elasticsearch",
+  "version": "1.0.0",
+  "description": "ElasticSearch integration into Trails.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trailsjs/trailpack-elasticsearch.git"
+  },
+  "keywords": [
+    "trailpack",
+    "trails",
+    "trailsjs",
+    "elastic",
+    "elasticsearch",
+    "search"
+  ],
+  "author": "Trails.js Team <hello@trailsjs.io>",
+  "contributors": [
+    {
+      "name": "Konstantin Zolotarev",
+      "url": "http://github.com/konstantinzolotarev"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trailsjs/trailpack-elasticsearch/issues"
+  },
+  "homepage": "https://github.com/trailsjs/trailpack-elasticsearch#readme",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "eslintConfig": "trils",
+  "devDependencies": {
+    "eslint": "^3.0.1",
+    "eslint-config-trails": "^1.0.7",
+    "mocha": "^2.5.3",
+    "smokesignals": "^1.2.2",
+    "trailpack-core": "^1.0.0",
+    "trails": "^1.0.4"
+  },
+  "dependencies": {
+    "elasticsearch": "^11.0.1",
+    "lodash": "^4.13.1",
+    "trailpack": "^1.0.5"
+  }
+}
