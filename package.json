@@ -33,7 +33,9 @@
   "engines": {
     "node": ">= 4.0.0"
   },
-  "eslintConfig": "trils",
+  "eslintConfig": {
+    "extends": "trails"
+  },
   "devDependencies": {
     "eslint": "^3.0.1",
     "eslint-config-trails": "^1.0.7",
