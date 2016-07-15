@@ -37,7 +37,58 @@ module.exports = {
 ```
 
 ### Configure connection
-TBD
+
+Configuration file for Elasticsearch trailpack is: `config/elasticsearch.js`
+Otherwise you could use `config/env/{env}.js` files with `elasticsearch` property
+
+```js
+
+// config/elasticsearch.js
+
+module.exports = {
+
+  connection: {
+    // List of hosts for elastic cluster
+    // hosts: [],
+
+    // One elastic instance host
+    host: 'localhost:9200',
+    // Log level
+    log: 'trace'
+  },
+
+  // Will validate if elastic connection is alive on Trails app start
+  validateConnection: true
+}
+```
+
+### Using Elasticsearch API
+
+This trailpack creates an app propertry with elasticseach client. `app.elasticClient`
+So you could use it whatever you want
+
+```js
+// api/controller/SomeController.js
+const Controller = require('trails-controller')
+
+module.exports = class CommunicationController extends Controller {
+
+  someAction (request, reply) {
+    // Perform an action
+    this.app.elasticClient
+      .search({
+        q: 'something'
+      })
+      .then(function (body) {
+        const hits = body.hits.hits;
+      }, function (error) {
+        console.trace(error.message);
+      })
+  }
+}
+```
+
+More information about Elasticsearch client could be found here: https://github.com/elastic/elasticsearch-js
 
 ## Contributing
 We love contributions! Please check out our [Contributor's Guide](https://github.com/trailsjs/trails/blob/master/CONTRIBUTING.md) for more
