@@ -71,7 +71,7 @@ So you could use it whatever you want
 // api/controller/SomeController.js
 const Controller = require('trails-controller')
 
-module.exports = class CommunicationController extends Controller {
+module.exports = class SomeController extends Controller {
 
   someAction (request, reply) {
     // Perform an action
