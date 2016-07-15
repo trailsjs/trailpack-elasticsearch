@@ -3,7 +3,7 @@
 const _ = require('lodash')
 const smokesignals = require('smokesignals')
 
-module.exports = _.defaultsDeep({
+exports.noValidate = _.defaultsDeep({
   pkg: {
     name: 'elasticsearch-trailpack-test'
   },
@@ -20,10 +20,35 @@ module.exports = _.defaultsDeep({
     elasticsearch: {
 
       connection: {
+        host: 'localhost:9200',
+        log: 'error'
+      },
+      validateConnection: false
+    }
+  }
+}, smokesignals.FailsafeConfig)
 
-        host: 'localhost:9200'
+exports.validate = _.defaultsDeep({
+  pkg: {
+    name: 'elasticsearch-trailpack-test'
+  },
+  config: {
+    log: {
+      logger: new smokesignals.Logger('error')
+    },
+    main: {
+      packs: [
+        require('trailpack-core'),
+        require('../') // trailpack-elasticsearch
+      ]
+    },
+    elasticsearch: {
 
-      }
+      connection: {
+        host: 'localhost:9200',
+        log: 'error'
+      },
+      validateConnection: true
     }
   }
 }, smokesignals.FailsafeConfig)

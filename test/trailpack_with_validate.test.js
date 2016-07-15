@@ -3,18 +3,17 @@
 const TrailsApp = require('trails')
 const assert = require('assert')
 const _ = require('lodash')
+const config = require('./app')
 
-describe('Elasticsearh Trailpack', () => {
-
+describe('Elasticsearh Trailpack with validate connection', () => {
   before(() => {
-    global.app = new TrailsApp(require('./app').noValidate)
+    global.app = new TrailsApp(config.validate)
     return global.app.start()
   })
 
   after(() => {
     return global.app.stop()
   })
-
   describe('trailpack connected', () => {
     it('should load pack', () => {
       assert(global.app.packs.elasticsearch)
@@ -33,15 +32,15 @@ describe('Elasticsearh Trailpack', () => {
     })
 
     it('shuold ping without problems', () => {
-      // have to wrap in promise
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         global.app.elasticClient
           .ping((err) => {
-            assert(!err)
+            assert(!err) //check for no error
 
             resolve()
           })
       })
     })
   })
+
 })

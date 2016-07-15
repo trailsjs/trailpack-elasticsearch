@@ -4,7 +4,8 @@
   "description": "ElasticSearch integration into Trails.js",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . && mocha"
+    "test": "eslint . && mocha",
+    "mocha": "mocha"
   },
   "repository": {
     "type": "git",

@@ -30,7 +30,12 @@ module.exports = class ElasticsearchTrailpack extends Trailpack {
   initialize() {
     super.initialize()
 
-    this.app.elasticClient = new elasticsearch.Client(this.app.config.elasticsearch.connection)
+    // Notice !!!
+    // Elastic try to change given config onject. So do not remove `_.cone`
+    // Otherwise Trails will pass readonly object and Elasticsearch wouldn't
+    // be able to connect
+    this.client = new elasticsearch.Client(_.clone(this.app.config.elasticsearch.connection))
+    this.app.elasticClient = this.client
 
     // If no need to validate connection - exit
     if (!this.app.config.elasticsearch.validateConnection)
@@ -38,9 +43,7 @@ module.exports = class ElasticsearchTrailpack extends Trailpack {
 
     // validating connection using ping command
     return new Promise((resolve, reject) => {
-      this.app.elasticClient.ping({
-        requestTimeout: 3000
-      }, function(err) {
+      this.client.ping((err) => {
         if (err)
           return reject(err)
 
