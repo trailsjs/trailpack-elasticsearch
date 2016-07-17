@@ -1,6 +1,6 @@
 {
   "name": "trailpack-elasticsearch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ElasticSearch integration into Trails.js",
   "main": "index.js",
   "scripts": {
