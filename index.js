@@ -31,7 +31,7 @@ module.exports = class ElasticsearchTrailpack extends Trailpack {
     super.initialize()
 
     // Notice !!!
-    // Elastic try to change given config onject. So do not remove `_.cone`
+    // Elastic try to change given config onject. So do not remove `_.clone`
     // Otherwise Trails will pass readonly object and Elasticsearch wouldn't
     // be able to connect
     this.client = new elasticsearch.Client(_.clone(this.app.config.elasticsearch.connection))
